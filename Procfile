@@ -1,1 +1,1 @@
-worker: python backtest_1015_eod.py
+worker: python backtest_1015_avwap_stop.py
