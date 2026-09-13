@@ -54,3 +54,7 @@ SELECT
 FROM public.spot_supply_1015_avwap_stop_backtest
 WHERE data_status='OK';
 ```
+
+
+## v2 fix
+Reads the 88 canonical 10:15 events directly from `public.spot_supply_1h_backtest_events`; it no longer depends on the intermediate EOD backtest table.

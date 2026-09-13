@@ -133,17 +133,18 @@ def add_avwap(bars):
 
 
 def load_events():
+    # Read the canonical 88-event source directly. This avoids depending on the
+    # separate EOD backtest table and makes this worker self-contained.
     sql = """
     SELECT
         study_start, study_end, run_id AS source_run_id,
         trading_date, symbol, spot_instrument_key,
         breakout_time, entry_price AS breakout_price,
-        strong_supply_high, breakout_pct,
-        eod_return_pct
-    FROM public.spot_supply_1015_eod_backtest
+        strong_supply_high, breakout_pct
+    FROM public.spot_supply_1h_backtest_events
     WHERE study_start=%s
       AND study_end=%s
-      AND data_status='OK'
+      AND (breakout_time AT TIME ZONE 'Asia/Kolkata')::time = TIME '10:15'
     ORDER BY trading_date, symbol
     """
     with psycopg.connect(DB, row_factory=dict_row, connect_timeout=15) as conn:
