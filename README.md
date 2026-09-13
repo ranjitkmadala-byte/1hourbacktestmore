@@ -1,26 +1,22 @@
-# 88-event AVWAP stop comparison
+# 88-event Strong Supply -> AVWAP retrace -> 3m recovery entry backtest
 
-Same 88 existing 10:15 Strong Supply breakouts.
+Sequence tested:
+1. Existing 10:15 Strong Supply breakout.
+2. After 10:15, price must retrace to/touch the running AVWAP anchored from the 09:15 3-minute bar.
+3. No entry on touch.
+4. After the retrace bar, wait for the first completed 3-minute candle close above AVWAP.
+5. Entry = that recovery candle close.
+6. Measure EOD return, MFE/MAE, +0.5/+1/+1.5/+2%, and optional 0.25%-below-AVWAP stop.
 
-AVWAP anchor:
-- first 3-minute spot candle of the day (09:15-09:18)
-- anchor reference low is stored
-- AVWAP is cumulative volume-weighted typical price from that bar
-
-Rules compared:
-1. Two consecutive 3-minute closes below AVWAP
-2. One 3-minute close at least 0.25% below AVWAP
-
-Entry:
-- 10:15 Strong Supply breakout close
+NO_RETRACE and RETRACE_NO_RECOVERY are recorded separately and are not treated as entries.
 
 Writes:
-- public.spot_supply_1015_avwap_stop_compare
-- public.spot_supply_1015_avwap_stop_compare_summary
+- public.spot_supply_1015_avwap_retrace_entry_backtest
+- public.spot_supply_1015_avwap_retrace_entry_summary
 
-Required Railway vars:
+Required Railway variables:
 - UPSTOX_TOKEN
 - NEON_DATABASE_URL
 
 Optional:
-- AVWAP_DEPTH_PCT=0.25
+- AVWAP_STOP_BUFFER_PCT=0.25
