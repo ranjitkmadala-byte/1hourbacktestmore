@@ -1,1 +1,1 @@
-worker: python backtest_acceptance_88.py
+worker: python backtest_1015_eod.py

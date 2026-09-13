@@ -1,7 +1,7 @@
 [build]
-builder = "NIXPACKS"
+builder="NIXPACKS"
 
 [deploy]
-startCommand = "python backtest_acceptance_88.py"
-restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 2
+startCommand="python backtest_1015_eod.py"
+restartPolicyType="ON_FAILURE"
+restartPolicyMaxRetries=2
