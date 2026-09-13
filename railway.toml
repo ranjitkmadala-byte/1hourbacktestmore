@@ -2,6 +2,6 @@
 builder="NIXPACKS"
 
 [deploy]
-startCommand="python backtest_1015_avwap_stop.py"
+startCommand="python backtest_avwap_stop_compare.py"
 restartPolicyType="ON_FAILURE"
 restartPolicyMaxRetries=2

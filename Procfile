@@ -1,1 +1,1 @@
-worker: python backtest_1015_avwap_stop.py
+worker: python backtest_avwap_stop_compare.py
